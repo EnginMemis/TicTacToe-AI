@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<limits.h>
+#include<conio.h>
 
 int update(int board[3][3]);
 int minimax(int board[3][3], int depth, int isMaximizing);
@@ -11,7 +12,8 @@ int main(){
 	
 	int board[3][3] = {0}; // X->1  O->-1  Empty->0
 	
-	update(board);														// call Game Loop function
+	update(board);													// call Game Loop function
+	getch();
 	return 0;
 }
 
