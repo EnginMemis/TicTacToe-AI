@@ -21,7 +21,6 @@ int update(int board[3][3]){
 	int winner = -2;													// if winner is -2 it's not game over 
 	int i;
 	int x,y;
-	int count;
 	
 	i = 0;																//turn control
 	while(winner == -2){												//game loop
