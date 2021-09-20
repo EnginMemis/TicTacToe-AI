@@ -2,6 +2,7 @@
 #include<limits.h>
 
 int update(int board[3][3]);
+int minimax(int board[3][3], int depth, int isMaximizing);
 int checkWinner(int board[3][3]);
 void choicePosition(int board[3][3]);
 void displayBoard(int board[3][3]);
@@ -176,7 +177,7 @@ int checkWinner(int board[3][3]){										//function winner control
 	
 }
 
-int minimax(int board[3][3], int isMaximizing){						//function choosing the best move for AI using minimax algorithm
+int minimax(int board[3][3],int depth, int isMaximizing){						//function choosing the best move for AI using minimax algorithm
 	
 	int winner = 0;
 	int score;
@@ -198,7 +199,7 @@ int minimax(int board[3][3], int isMaximizing){						//function choosing the bes
 			for(j = 0 ; j < 3 ; j++){
 				if(board[i][j] == 0){
 					board[i][j] = 1;
-					score = minimax(board,0);
+					score = minimax(board,depth+1,0);
 					board[i][j] = 0;
 					if(score > bestScore){
 						bestScore = score;
@@ -216,7 +217,7 @@ int minimax(int board[3][3], int isMaximizing){						//function choosing the bes
 			for(j = 0 ; j < 3 ; j++){
 				if(board[i][j] == 0){
 					board[i][j] = -1;
-					score = minimax(board,1);						// recursively call minimax function
+					score = minimax(board,depth+1,1);						// recursively call minimax function
 					board[i][j] = 0;
 					if(score < bestScore){
 						bestScore = score;
@@ -240,7 +241,7 @@ void choicePosition(int board[3][3]){								//function choosing best move using
 		for(j = 0 ; j < 3 ; j++){
 			if(board[i][j] == 0){
 				board[i][j] = 1;
-				score = minimax(board,0);							// call minimax algorithm
+				score = minimax(board,0,0);							// call minimax algorithm
 				board[i][j] = 0;
 				if(score > bestScore){
 					bestScore = score;
@@ -259,6 +260,7 @@ void displayBoard(int board[3][3]){									// function that display the board
 	int i,j;
 	
 	system("cls");
+	printf("\n  Developed by Engin Memis\n\n");
 	printf("\n X -> AI   O -> You\n");
 	printf("\n       1   2   3\n\n");
 	for(i = 0 ; i < 3 ; i++){
