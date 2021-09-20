@@ -78,7 +78,7 @@ int checkWinner(int board[3][3]){										//function winner control
 		}
 	}
 	
-	if(count == 0){														//if there is no space on the board the game is over
+	if(count == 0){											//if there is no space on the board the game is over
 		return 0;
 	}
 	
